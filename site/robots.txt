@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /404.html
+
+Sitemap: https://water-fire-mold-restoration.pages.dev/sitemap.xml
+Sitemap: https://water-fire-mold-restoration.pages.dev/sitemap.txt

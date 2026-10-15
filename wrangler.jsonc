@@ -1,0 +1,30 @@
+/**
+ * Cloudflare Workers (static assets) configuration for the Water Restoration mirror.
+ *
+ *   URL: https://water-restoration.guardianpestcontrol679.workers.dev/
+ *
+ * This is an assets-only Worker: no JavaScript runs, Cloudflare serves the files in ./site
+ * directly. Requests to static assets are free and unlimited on the Workers Free plan.
+ *
+ * Cloudflare "Workers Builds" settings for this repository:
+ *   Build command:  (leave empty)
+ *   Deploy command: npx wrangler deploy
+ *   Root directory: /
+ */
+{
+  "$schema": "https://unpkg.com/wrangler/config-schema.json",
+  "name": "water-restoration",
+  "compatibility_date": "2026-10-12",
+  "workers_dev": true,
+  "observability": { "enabled": true },
+  "assets": {
+    // Only this folder is uploaded. The repository's .git directory lives outside it, which is
+    // what caused the earlier "Asset too large (.git/objects/pack/…)" failure when the assets
+    // directory was "." (the repository root).
+    "directory": "./site",
+    // Serve /404.html with a real 404 status for unknown URLs.
+    "not_found_handling": "404-page",
+    // /path -> /path/ (matches the Pages build: every page is /path/index.html).
+    "html_handling": "auto-trailing-slash"
+  }
+}

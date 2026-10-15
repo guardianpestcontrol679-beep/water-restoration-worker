@@ -1,0 +1,2 @@
+# Cloudflare Pages redirects (trailing-slash normalisation is automatic)
+/index.html  /  301
